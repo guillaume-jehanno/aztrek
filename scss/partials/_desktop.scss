@@ -1,0 +1,87 @@
+header {
+  background: url("../images/bg-header-desktop.jpg") bottom no-repeat;
+  background-size: cover;
+
+  nav ul {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  #mobile-header {
+    display: none;
+  }
+
+  #menu a {
+    font-size: $txt-tab;
+  }
+
+  #menu ul li {
+    margin-top: 5%;
+  }
+
+  .header-content {
+    margin-top: 10%;
+
+    form {
+      margin-bottom: 10%;
+    }
+
+    span {
+      margin-bottom: 8%;
+    }
+
+    .btn {
+      margin: 8% 0 7%;
+    }
+  }
+}
+
+.container {
+  .title img {
+    margin: 2%;
+  }
+}
+
+.mise-en-avant {
+  display: flex;
+  margin-left: 18%;
+}
+
+.insta-storie {
+  margin-bottom: 5%;
+
+  .title img {
+    margin: 3% 0 1%;
+  }
+
+  .rslides {
+    margin: 3% auto;
+  }
+}
+
+.argument {
+  height: 80vh;
+  position: relative;
+  margin-bottom: 24%;
+
+  p {
+    font-size: $txt-tab;
+    line-height: 30px;
+    text-transform: uppercase;
+    margin: 5% 25% 0;
+  }
+  iframe {
+    display: block;
+    position: absolute;
+    top: 60%;
+  }
+}
+// .mise-en-avant {
+//   article {
+//     flex-basis: 33.33%;
+//   }
+//   .mise-en-avant-2 {
+//     flex-flow: wrap;
+//     flex-basis: 2%;
+//   }
+// }

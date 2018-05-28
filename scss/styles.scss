@@ -1,0 +1,16 @@
+@import "partials/variables";
+
+@import "partials/reset";
+
+@import "partials/reset";
+
+@import "partials/mixins";
+
+@import "partials/bases";
+
+@media screen and (min-width: $bp-tablet) {
+  @import 'partials/tablet';
+}
+@media screen and (min-width: $bp-desktop) {
+  @import 'partials/desktop';
+}

@@ -1,0 +1,68 @@
+header {
+  background: url("../images/bg-header-tablette.jpg") bottom no-repeat;
+  background-size: cover;
+
+  .logo {
+    margin: 0 0 10%;
+  }
+
+  .header-content {
+    margin: 0;
+
+    form {
+      margin-bottom: 10%;
+    }
+
+    p {
+      font-size: 1.875rem;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    .btn {
+      padding: 10px 30px;
+      font-size: $txt-tab;
+    }
+  }
+}
+
+.mise-en-avant {
+  flex-flow: row wrap;
+  margin-left: 10%;
+  margin-bottom: 5%;
+
+  article {
+    margin-right: 1%;
+  }
+  .flex-desktop {
+    display: flex;
+    flex-flow: row wrap;
+  }
+}
+
+.insta-storie {
+  .title {
+    margin: 0;
+  }
+}
+
+.twitter {
+  h2 {
+    margin: 0 10% 5%;
+  }
+
+  .title {
+    margin: 0;
+  }
+
+  .title img {
+    margin: 0 0 3%;
+  }
+
+  .rslides {
+    margin: 0 auto;
+  }
+  margin-bottom: 5%;
+}

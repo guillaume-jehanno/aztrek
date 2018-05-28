@@ -1,0 +1,277 @@
+h2 {
+  text-transform: uppercase;
+  font-size: $sm-title;
+  color: $bleu;
+  letter-spacing: 3px;
+}
+
+header {
+  background: url("../images/bg-header-mobile.jpg") center no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+
+  .header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 8% 0;
+
+    img {
+      max-width: 70%;
+    }
+
+    p {
+      margin: 0;
+      color: $white;
+      text-transform: uppercase;
+      font-size: $sm-title;
+    }
+
+    .btn {
+      @include button($bleu,$txt-btn,$white);
+      margin: 8% 0 10%;
+    }
+
+    .ou {
+      margin: 0 0 10%;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    select {
+      background-color: $white;
+      align-items: stretch;
+      padding: 3% 36% 3% 0;
+      margin: 10% 0 5%;
+      border: none;
+      border-radius: 0;
+    }
+
+    .btn-go {
+      @include button($bleu,$txt-btn,$white);
+      border-radius: 0;
+      padding: 8px 0;
+    }
+
+    .btn-go:hover {
+      background-color: $argile;
+    }
+
+    .btn:hover {
+      background-color: $argile;
+    }
+  }
+
+  .logo {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 0 0 15%;
+  }
+}
+
+#mobile-header {
+  position: relative;
+  top: 1.5rem;
+  left: 1.5rem;
+  font-size: 2rem;
+
+  .fa {
+    color: #fff;
+  }
+}
+
+#menu {
+  a {
+    font-size: 0;
+  }
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 5%;
+}
+
+.mise-en-avant {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  article {
+    position: relative;
+    margin-bottom: 7%;
+
+    .pub p {
+      margin-bottom: 5%;
+    }
+
+    .pub {
+      position: absolute;
+      top: 30%;
+      left: 10%;
+      color: $white;
+      text-transform: uppercase;
+      font-size: $sm-title;
+    }
+
+    .pub-2 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      text-transform: uppercase;
+      opacity: 0;
+    }
+
+    .pub-2:hover {
+      opacity: 1;
+      background-color: $bleu;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+    }
+
+    .btn-2 {
+      position: absolute;
+      bottom: 0;
+      left: 23%;
+      bottom: 10%;
+    }
+  }
+
+  .title img {
+    margin-bottom: 5%;
+    width: 50%;
+  }
+
+  .title h2 {
+    margin-bottom: 15%;
+  }
+
+  .mise-en-avant-1 img {
+    margin: 0 auto;
+  }
+
+  .btn-2 {
+    @include button($terre,$txt-btn,$white);
+  }
+
+  .item {
+    display: flex;
+  }
+}
+
+.insta-storie {
+  background: url("../images/bg-insta.jpg") no-repeat left;
+  background-size: cover;
+  margin-bottom: 15%;
+
+  .title {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+
+    h2 {
+      margin: 0 8%;
+    }
+  }
+
+  .title img {
+    margin: 5% 0 7%;
+  }
+  display: flex;
+  flex-direction: column;
+
+  .rslides {
+    margin: 12% auto;
+  }
+}
+
+.argument {
+  background: url("../images/bg-argument.jpg") no-repeat bottom;
+  background-size: cover;
+  min-height: 40vh;
+  margin-bottom: 15%;
+  color: $white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  p {
+    font-size: $txt-tab;
+    margin: 12% 10% 0;
+    line-height: 20px;
+    text-align: justify;
+  }
+  iframe {
+    display: none;
+  }
+}
+
+.twitter {
+  display: flex;
+  flex-direction: column;
+
+  .title {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .title img {
+    margin: 5% 0 7%;
+  }
+
+  h2 {
+    align-items: center;
+    margin: 0 10% 10%;
+  }
+
+  .rslides {
+    margin-bottom: 10%;
+  }
+}
+
+footer {
+  font-size: $txt-tab;
+  background-color: $bleu;
+  min-height: 60vh;
+
+  #nom {
+    background-color: $white;
+  }
+
+  label {
+    margin-left: -5%;
+  }
+
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10%;
+  }
+
+  .infos {
+    margin-top: 10%;
+  }
+
+  h3 {
+    color: $white;
+    margin-bottom: 5%;
+  }
+
+  .infos ul li {
+    margin-top: 2%;
+  }
+
+  .newsletter {
+    margin-top: 10%;
+  }
+}
