@@ -22,6 +22,7 @@
 
   <script src="./js/jquery-3.3.1.min.js" charset="utf-8"></script>
   <script src="./js/jquery.sidr.min.js" charset="utf-8"></script>
+  <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="./js/responsiveslides.min.js" charset="utf-8"></script>
   <script src="./js/script.js" charset="utf-8"></script>
 </body>

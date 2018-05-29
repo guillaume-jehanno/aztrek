@@ -27,7 +27,7 @@ $menus = [
 <ul class="nav flex-column">
     <?php foreach ($menus as $menu) : ?>
         <li class="nav-item">
-            <a class="nav-link <?php echo (getcwd() == $menu['url']) ? 'active' : ''; ?>" href="<?php echo $menu['url']; ?>">
+            <a class="nav-link <?php echo (currentPath() == $menu['url']) ? 'active' : ''; ?>" href="<?php echo $menu['url']; ?>">
             <i class="fa fa-<?php echo $menu['icon']; ?>"></i>                                               
                 <?php echo $menu['label']; ?>
             </a>

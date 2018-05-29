@@ -1,0 +1,26 @@
+{
+  "name": "integration-aztrek",
+  "version": "1.0.0",
+  "description": "Evaluation module 3",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guillaume-jehanno/aztrek.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/guillaume-jehanno/aztrek/issues"
+  },
+  "homepage": "https://github.com/guillaume-jehanno/aztrek#readme",
+  "dependencies": {
+    "bootstrap": "^4.1.1",
+    "node": "^10.2.0"
+  }
+}

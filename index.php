@@ -3,25 +3,23 @@ require_once 'lib/functions.php';
 require_once 'model/database.php';
 
 // Déclaration des variables
-//$list_projects = getAllProjects();
+$list_sejour = getEnAvantDeGuingamp();
 
-getHeader('Acceuil');
+getHeader('Accueil');
 ?>
 
 
   <main>
-    <div class="container">
+    <div class="row">
 
       <div class="title">
         <img src="./images/picto-montagne.png" alt="">
         <h2>Choissisez votre experience</h2>
       </div>
 
-      <section class="mise-en-avant">
+      <section class="">
 
-
-
-        <article class="mise-en-avant-1">
+        <article class="">
           <picture>
             <source srcset="./images/mise-en-avant-mob.jpg" media="(max-width: 767px)">
             <source srcset="./images/mise-en-avant-tab.jpg" media="(max-width: 992px)">
@@ -31,31 +29,18 @@ getHeader('Acceuil');
             <p>Voyage sur mesure</p>
             <p>Nous faisons votre voyage uniquement pour vous et vos envies</p>
           </div>
-          <div class="btn-2"><a href="#">En savoir plus</a></div>
+          <div class="btn"><a href="#">En savoir plus</a></div>
         </article>
-        <div class="flex-desktop">
-          <article class="mise-en-avant-2">
-            <a href="">
-          <img src="./images/fond-mea-2.jpg" alt="" class="item"><span class="pub-2">Machin</span></a>
-          </article>
+        
 
-          <article class="mise-en-avant-2">
-            <a href="">
-          <img src="./images/fond-mea-3.jpg" alt="" class="item"><span class="pub-2">Machin</span></a>
-          </article>
+        <!-- Boucle de mise en avant du site via sejour_inc.php -->
 
-          <article class="mise-en-avant-2">
-            <a href="">
-          <img src="./images/fond-mea-4.jpg" alt="" class="item"><span class="pub-2">Machin</span></a>
-          </article>
-
-          <article class="mise-en-avant-2">
-            <a href="">
-          <img src="./images/fond-mea-6.jpg" alt="" class="item"><span class="pub-2">Machin</span></a>
-          </article>
-        </div>
+        <?php foreach ($list_sejour as $sejour) : ?>
+                    <?php include 'include/sejour_inc.php'; ?>
+                <?php endforeach; ?>
+        
       </section>
-    </div>
+      </div>
     <section>
       <article class="insta-storie">
         <div class="title">
