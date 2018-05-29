@@ -1,4 +1,4 @@
-<?php require_once __DIR__ . '/../security.php'; ?>
+<?php require_once __DIR__.'/../security.php'; ?>
 <html>
     <head>
         <meta charset="utf-8">
@@ -28,7 +28,7 @@
             <div class="row">
                 <nav class="col-md-2 d-none d-md-block bg-light sidebar">
                     <div class="sidebar-sticky">
-                        <?php require_once __DIR__ . '/menu.php'; ?>
+                        <?php require_once __DIR__.'/menu.php'; ?>
                     </div>
                 </nav>
 

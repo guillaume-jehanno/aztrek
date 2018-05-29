@@ -10,3 +10,12 @@ try {
 } catch (PDOException $ex) {
     echo 'Erreur de la connexion à la BDD';
 }
+
+// Inclure automatiquement les fichiers PHP positionnés dans le dossier "entity"
+$entity_dir = __DIR__.'/entity/';
+$files = scandir($entity_dir);
+foreach ($files as $file) {
+    if (is_file($entity_dir.$file) && pathinfo($entity_dir.$file, PATHINFO_EXTENSION) == 'php') {
+        require_once $entity_dir.$file;
+    }
+}
