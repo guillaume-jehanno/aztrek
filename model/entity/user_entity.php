@@ -35,3 +35,27 @@ function getOneUser(int $id)
 
     return $stmt->fetch();
 }
+
+// Selection de tous les utilisateurs avec le nbr de commentaires
+// avec le nombre de reservations
+
+function getAllUser()
+{
+    /* @var $connection PDO */
+    global $connection;
+
+    $query = '
+            SELECT user.*,
+        COUNT(commentaire.id) AS total_commentaire,
+        COUNT(reservation.id) AS total_reservation,
+        CONCAT(user.nom, " " , user.prenom) AS nom_complet
+            FROM user 
+            INNER JOIN commentaire ON user.id = commentaire.user_id
+            INNER JOIN reservation ON reservation.user_id = user.id 
+            GROUP BY user.id';
+
+    $stmt = $connection->prepare($query);
+    $stmt->execute();
+
+    return $stmt->fetchALL();
+}

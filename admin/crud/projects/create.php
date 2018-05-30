@@ -2,7 +2,7 @@
 require_once '../../../model/database.php';
 
 // Récupérer la liste des catégories pour la liste déroulante
-$list_categories = getAllEntity("category");
+$list_categories = getAllEntity('sejour');
 
 require_once '../../layout/header.php';
 ?>
@@ -11,12 +11,12 @@ require_once '../../layout/header.php';
 
 <form action="create_query.php" method="post" enctype="multipart/form-data">
     <div class="form-group">
-        <label for="title">Titre</label>
-        <input type="text" id="title" name="title" class="form-control">
+        <label for="titre">Titre</label>
+        <input type="text" id="titre" name="titre" class="form-control">
     </div>
     <div class="form-group">
-        <label for="picture">Photo</label>
-        <input type="file" id="picture" name="picture" accept="image/*" class="form-control">
+        <label for="image">Photo</label>
+        <input type="file" id="image" name="image" accept="image/*" class="form-control">
     </div>
     <div class="form-group">
         <label for="description">Description</label>
@@ -27,19 +27,11 @@ require_once '../../layout/header.php';
         <input type="number" id="price" name="price" class="form-control">
     </div>
     <div class="form-group">
-        <label for="date_start">Date de début</label>
-        <input type="date" id="date_start" name="date_start" class="form-control">
-    </div>
-    <div class="form-group">
-        <label for="date_end">Date de fin</label>
-        <input type="date" id="date_end" name="date_end" class="form-control">
-    </div>
-    <div class="form-group">
-        <label for="category">Catégorie</label>
-        <select id="category" name="category_id" class="form-control">
+        <label for="sejour">Sejour</label>
+        <select id="sejour" name="sejour_id" class="form-control">
             <?php foreach ($list_categories as $category) : ?>
-                <option value="<?php echo $category["id"]; ?>">
-                    <?php echo $category["label"]; ?>
+                <option value="<?php echo $category['id']; ?>">
+                    <?php echo $category['titre']; ?>
                 </option>
             <?php endforeach; ?>
         </select>

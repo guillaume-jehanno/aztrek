@@ -4,12 +4,12 @@
 
 <form action="create_query.php" method="post" enctype="multipart/form-data">
     <div class="form-group">
-        <label for="lastname">Nom</label>
-        <input type="text" id="lastname" name="lastname" class="form-control">
+        <label for="nom">Nom</label>
+        <input type="text" id="nom" name="nom" class="form-control">
     </div>
     <div class="form-group">
-        <label for="firstname">Prénom</label>
-        <input type="text" id="firstname" name="firstname" class="form-control">
+        <label for="prenom">Prénom</label>
+        <input type="text" id="prenom" name="prenom" class="form-control">
     </div>
     <div class="form-group">
         <label for="picture">Photo</label>

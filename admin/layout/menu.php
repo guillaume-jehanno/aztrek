@@ -17,11 +17,6 @@ $menus = [
         'url' => ADMIN_URL.'crud/projects/',
         'icon' => 'briefcase',
     ],
-    [
-        'label' => 'Paramètres',
-        'url' => ADMIN_URL.'crud/projects/',
-        'icon' => 'cog',
-    ],
 ];
 ?>
 <ul class="nav flex-column">

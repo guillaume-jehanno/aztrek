@@ -22,7 +22,7 @@ function getSejourByPays(int $id)
     $query = 'SELECT 
     sejour.titre,
     sejour.image,
-    pays.id,
+    sejour.id,
     pays.label
 FROM sejour
 INNER JOIN pays ON pays.id = sejour.pays_id

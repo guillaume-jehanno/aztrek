@@ -4,6 +4,10 @@ USE dcpro9_aztrek;
 SELECT *
 FROM pays;
 
+-- getOneSejour
+
+
+
 -- Selection des sejours avec le booléen en avant pour la section en avant du site 
 
 USE dcpro9_aztrek;
@@ -36,9 +40,13 @@ WHERE pays.id = sejour.id;
 -- voir avec Pierre selection des colonnes 
 
 USE dcpro9_aztrek;
-SELECT *
-FROM depart 
-WHERE depart.sejour_id = 1
+  SELECT depart.*,
+        DATE_FORMAT(depart.date_depart, "%d-%m-%Y") AS date_depart,
+        depart.places_totale - SUM(reservation.nb_place) AS place_restante
+    FROM depart 
+    LEFT JOIN reservation ON reservation.depart_id = depart.id
+    WHERE depart.sejour_id = 1
+    GROUP BY depart.id
 
 
 
@@ -73,18 +81,6 @@ INNER JOIN sejour ON commentaire.sejour_id = sejour.id
 INNER JOIN user ON commentaire.sejour_id = user.id
 WHERE sejour.id = 1
 
---getReservationParDepart
--- nb_place = nb_reservation ??
-
-USE dcpro9_aztrek;
-SELECT 
-    depart.*,
-    depart.places_totale - SUM(reservation.nb_place)
-FROM depart
-INNER JOIN reservation ON reservation.depart_id = depart.id
-INNER JOIN sejour ON depart.sejour_id = sejour.id
-WHERE sejour.id = 3
-GROUP BY depart.id
 
 --getOneUser (pour l'admin)
 
@@ -95,15 +91,21 @@ WHERE user.id = 1
 
 -- getAllUser (pour l'admin)
 -- voir avec Pierre la selection des items 
--- $stmt->bindParam(":limit", $limit, PDO::PARAM_INT);
+
 
 USE dcpro9_aztrek;
 SELECT user.*,
-COUNT(commentaire.id) AS ,
-COUNT(reservation.id),
-    CONCAT(user.nom, ' ', user.prenom) AS nom_complet
+COUNT(commentaire.id) AS total_commentaire,
+COUNT(reservation.id) AS total_reservation,
+CONCAT(user.nom, ' ', user.prenom) AS nom_complet
 FROM user 
 INNER JOIN commentaire ON user.id = commentaire.user_id
 INNER JOIN reservation ON reservation.user_id = user.id 
 GROUP BY user.id 
---LIMIT :limit; 
+
+
+USE dcpro9_aztrek;
+SELECT *,
+DATE_FORMAT(depart.date_depart, "%d-%m-%Y") AS date_depart
+FROM sejour 
+INNER JOIN depart ON sejour.id = depart.sejour_id

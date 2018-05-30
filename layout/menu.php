@@ -1,3 +1,11 @@
+<?php require_once __DIR__.'/../lib/functions.php';
+
+$utilisateur = currentUser();
+
+?>
+
+
+
 <div class="container">
       <div id="mobile-header">
 
@@ -12,8 +20,11 @@
           <li><a href="">Communauté</a></li>
           <li><a href="">About</a></li>
           <li><a href="">Blog</a></li>
-          <li><a href="">Compte</a></li>
-          <li><a href="<?php echo ADMIN_URL; ?>">Connexion</a></li>
+          <?php if (!isset($utilisateur['id'])):?>
+          <li><a href="<?php echo ADMIN_URL; ?>">Login</a></li>
+          <?php else:?>
+          <li><a href="<?php echo ADMIN_URL; ?>">Mon Compte</a></li>
+          <?php endif; ?>
           <li><a href="">Contact</a></li>
         </ul>
       </nav>

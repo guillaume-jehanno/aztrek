@@ -1,5 +1,8 @@
 <?php
 
+if (!isset($_SESSION)) {
+    session_start();
+}
 
 /**
  * Debugger une variable.
@@ -45,4 +48,13 @@ function currentPath()
 function getConfigurateur()
 {
     require_once 'layout/configurateur.php';
+}
+
+function currentUser()
+{
+    if (isset($_SESSION['id'])) {
+        return getOneUser($_SESSION['id']);
+    }
+
+    return null;
 }

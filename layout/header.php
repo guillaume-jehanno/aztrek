@@ -22,7 +22,7 @@
       <div class="header-content">
 
         <div class="logo">
-          <img src="./images/logo.png" alt="">
+          <a href="<?php echo SITE_URL; ?>"><img src="./images/logo.png" alt=""></a>
         </div>
 
 

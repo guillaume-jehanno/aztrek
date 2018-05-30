@@ -16,6 +16,22 @@ function getEnAvantDeGuingamp()
     return $stmt->fetchAll();
 }
 
+function getOneSejour(int $id)
+{
+    /* @var $connection PDO */
+    global $connection;
+
+    $query = ' SELECT *
+        FROM sejour
+        WHERE sejour.id = :id';
+
+    $stmt = $connection->prepare($query);
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+
+    return $stmt->fetch();
+}
+
 // Départ par séjours
 
 function getDepartParSejour(int $id)
@@ -24,9 +40,13 @@ function getDepartParSejour(int $id)
     global $connection;
 
     $query = '
-    SELECT *
-    FROM depart 
-    WHERE depart.sejour_id = :id
+    SELECT depart.*,
+    DATE_FORMAT(depart.date_depart, "%d-%m-%Y") AS date_depart,
+    depart.places_totale - SUM(reservation.nb_place) AS place_restante
+FROM depart 
+LEFT JOIN reservation ON reservation.depart_id = depart.id
+WHERE depart.sejour_id = :id
+GROUP BY depart.id
     ';
 
     $stmt = $connection->prepare($query);
@@ -86,4 +106,20 @@ function getComParSejour(int $id)
     return $stmt->fetchAll();
 }
 
-// Nombre de places restantes par séjours
+function getAllSejour()
+{
+    /* @var $connection PDO */
+    global $connection;
+
+    $query = '
+    SELECT *,
+    DATE_FORMAT(depart.date_depart, "%d-%m-%Y") AS date_depart
+    FROM sejour 
+    INNER JOIN depart ON sejour.id = depart.sejour_id
+        ';
+
+    $stmt = $connection->prepare($query);
+    $stmt->execute();
+
+    return $stmt->fetchAll();
+}
