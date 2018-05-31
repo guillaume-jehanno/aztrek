@@ -14,7 +14,7 @@ $menus = [
     ],
     [
         'label' => 'Séjours',
-        'url' => ADMIN_URL.'crud/projects/',
+        'url' => ADMIN_URL.'crud/sejours/',
         'icon' => 'briefcase',
     ],
 

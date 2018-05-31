@@ -64,13 +64,11 @@ function getAllSejour()
     global $connection;
 
     $query = '
-    SELECT *,
-    DATE_FORMAT(depart.date_depart, "%d-%m-%Y") AS date_depart
-    FROM sejour 
-    LEFT JOIN depart ON sejour.id = depart.sejour_id
-    LEFT JOIN pays ON pays.id = sejour_id
-    
-        ';
+    SELECT sejour.*,
+            pays.label AS pays,
+            pays.picture AS pays_picture
+    FROM sejour
+    INNER JOIN pays ON pays.id = sejour.pays_id;';
 
     $stmt = $connection->prepare($query);
     $stmt->execute();
@@ -78,18 +76,20 @@ function getAllSejour()
     return $stmt->fetchAll();
 }
 
-function insertSejour(string $titre, string $description, string $image)
+function insertSejour(string $titre, string $description, string $image, int $en_avant, int $pays_id)
 {
     /* @var $connection PDO */
     global $connection;
 
-    $query = 'INSERT INTO sejour (titre, description, image)
-                VALUES (:titre, :description, :image);';
+    $query = 'INSERT INTO sejour (titre, description, image, en_avant, pays_id)
+                VALUES (:titre, :description, :image, :en_avant, :pays_id);';
 
     $stmt = $connection->prepare($query);
     $stmt->bindParam(':titre', $titre);
     $stmt->bindParam(':description', $description);
     $stmt->bindParam(':image', $image);
+    $stmt->bindParam(':en_avant', $en_avant);
+    $stmt->bindParam(':pays_id', $pays_id);
 
     $stmt->execute();
 }
