@@ -32,55 +32,7 @@ function getOneSejour(int $id)
     return $stmt->fetch();
 }
 
-// Départ par séjours
-
-function getDepartParSejour(int $id)
-{
-    /* @var $connection PDO */
-    global $connection;
-
-    $query = '
-    SELECT depart.*,
-    DATE_FORMAT(depart.date_depart, "%d-%m-%Y") AS date_depart,
-    depart.places_totale - SUM(reservation.nb_place) AS place_restante
-FROM depart 
-LEFT JOIN reservation ON reservation.depart_id = depart.id
-WHERE depart.sejour_id = :id
-GROUP BY depart.id
-    ';
-
-    $stmt = $connection->prepare($query);
-    $stmt->bindParam(':id', $id);
-    $stmt->execute();
-
-    return $stmt->fetchAll();
-}
-
 // Prix par sejours
-
-function getPrixParSejour(int $id)
-{
-    /* @var $connection PDO */
-    global $connection;
-
-    $query = '
-    SELECT 
-        depart.prix,
-        sejour.id,
-        sejour.titre,
-        pays.label
-        FROM sejour
-    INNER JOIN depart ON sejour.id = depart.sejour_id
-    INNER JOIN pays ON sejour.pays_id = pays.id
-    WHERE sejour.id = :id 
-    ';
-
-    $stmt = $connection->prepare($query);
-    $stmt->bindParam(':id', $id);
-    $stmt->execute();
-
-    return $stmt->fetchAll();
-}
 
 // Commentaires par séjours
 
@@ -115,11 +67,48 @@ function getAllSejour()
     SELECT *,
     DATE_FORMAT(depart.date_depart, "%d-%m-%Y") AS date_depart
     FROM sejour 
-    INNER JOIN depart ON sejour.id = depart.sejour_id
+    LEFT JOIN depart ON sejour.id = depart.sejour_id
+    LEFT JOIN pays ON pays.id = sejour_id
+    
         ';
 
     $stmt = $connection->prepare($query);
     $stmt->execute();
 
     return $stmt->fetchAll();
+}
+
+function insertSejour(string $titre, string $description, string $image)
+{
+    /* @var $connection PDO */
+    global $connection;
+
+    $query = 'INSERT INTO sejour (titre, description, image)
+                VALUES (:titre, :description, :image);';
+
+    $stmt = $connection->prepare($query);
+    $stmt->bindParam(':titre', $titre);
+    $stmt->bindParam(':description', $description);
+    $stmt->bindParam(':image', $image);
+
+    $stmt->execute();
+}
+
+function updateSejour(int $id, string $titre, string $description, string $image)
+{
+    /* @var $connection PDO */
+    global $connection;
+
+    $query = 'UPDATE sejour
+                SET titre = :titre,
+                    description = :description,
+                    image = :image
+            WHERE id = :id;';
+
+    $stmt = $connection->prepare($query);
+    $stmt->bindParam(':id', $id);
+    $stmt->bindParam(':titre', $titre);
+    $stmt->bindParam(':description', $description);
+    $stmt->bindParam(':image', $image);
+    $stmt->execute();
 }

@@ -50,12 +50,58 @@ function getAllUser()
         COUNT(reservation.id) AS total_reservation,
         CONCAT(user.nom, " " , user.prenom) AS nom_complet
             FROM user 
-            INNER JOIN commentaire ON user.id = commentaire.user_id
-            INNER JOIN reservation ON reservation.user_id = user.id 
+            LEFT JOIN commentaire ON user.id = commentaire.user_id
+            LEFT JOIN reservation ON reservation.user_id = user.id 
             GROUP BY user.id';
 
     $stmt = $connection->prepare($query);
     $stmt->execute();
 
     return $stmt->fetchALL();
+}
+
+function insertUser(string $nom, string $prenom, string $pseudo, string $email, string $password, int $admin, string $picture)
+{
+    /* @var $connection PDO */
+    global $connection;
+
+    $query = 'INSERT INTO user (nom, prenom, pseudo, email, password, admin, picture)
+                VALUES (:nom, :prenom, :pseudo, :email, :password, :admin, :picture);';
+
+    $stmt = $connection->prepare($query);
+    $stmt->bindParam(':nom', $nom);
+    $stmt->bindParam(':prenom', $prenom);
+    $stmt->bindParam(':pseudo', $pseudo);
+    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':password', $password);
+    $stmt->bindParam(':admin', $admin);
+    $stmt->bindParam(':picture', $picture);
+    $stmt->execute();
+}
+
+function updateUser(int $id, string $nom, string $prenom, string $pseudo, string $email, string $password, int $admin, string $picture)
+{
+    /* @var $connection PDO */
+    global $connection;
+
+    $query = 'UPDATE user
+                SET nom = :nom,
+                prenom = :prenom,
+                pseudo = :pseudo,
+                email = :email,
+                password = :password,
+                admin = :admin,
+                picture = :picture
+            WHERE id = :id;';
+
+    $stmt = $connection->prepare($query);
+    $stmt->bindParam(':id', $id);
+    $stmt->bindParam(':nom', $nom);
+    $stmt->bindParam(':prenom', $prenom);
+    $stmt->bindParam(':pseudo', $pseudo);
+    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':password', $password);
+    $stmt->bindParam(':admin', $admin);
+    $stmt->bindParam(':picture', $picture);
+    $stmt->execute();
 }

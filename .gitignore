@@ -1,5 +1,2 @@
-.idea/
-/nbproject/
+
 *.bak
-config/parameters.php
-.sass-cache

@@ -17,6 +17,17 @@ $menus = [
         'url' => ADMIN_URL.'crud/projects/',
         'icon' => 'briefcase',
     ],
+
+    [
+        'label' => 'Pays',
+        'url' => ADMIN_URL.'crud/pays/',
+        'icon' => 'flag',
+    ],
+    [
+        'label' => 'Depart',
+        'url' => ADMIN_URL.'crud/depart/',
+        'icon' => 'binoculars',
+    ],
 ];
 ?>
 <ul class="nav flex-column">

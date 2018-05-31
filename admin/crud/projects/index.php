@@ -19,7 +19,10 @@ require_once '../../layout/header.php';
         <tr>
             <th>Titre</th>
             <th>Date de départ</th>
+            <th>Prix</th>
+            <th>Pays</th>
             <th>Image</th>
+            <th>En avant</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -28,13 +31,22 @@ require_once '../../layout/header.php';
             <tr>
                 <td><?php echo $sejour['titre']; ?></td>
                 <td><?php echo $sejour['date_depart']; ?></td>
-                <?php $picture = (!empty($sejour['image'])) ? '../../../uploads/'.$sejour['image'] : 'http://via.placeholder.com/150x150'; ?>
-                <td><img src="<?php echo $sejour; ?>" class="img-thumbnail"></td>
+                <td><?php echo $sejour['prix']; ?> €</td>
+                <td ><?php echo $sejour['label']; ?></td>
+                <?php $image = (!empty($sejour['image'])) ? '../../../uploads/'.$sejour['image'] : 'http://via.placeholder.com/150x150'; ?>
+                <td><img src="<?php echo $image; ?>" class="img-thumbnail"></td>
+                <td><?php if ($sejour['en_avant']):?>
+                    <?php echo 'Oui'; ?>
+                    <?php else:?>
+                    <?php echo 'Non'; ?>
+                    <?php endif; ?>
+                </td>
                 <td>
                     <a href="update.php?id=<?php echo $sejour['id']; ?>" class="btn btn-secondary"><i class="fa fa-edit"></i></a>
                     <a href="delete_query.php?id=<?php echo $sejour['id']; ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                 </td>
             </tr>
+
         <?php endforeach; ?>
     </tbody>
 </table>

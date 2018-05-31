@@ -20,6 +20,9 @@ require_once '../../layout/header.php';
         <tr>
             <th>Nom</th>
             <th>Prénom</th>
+            <th>Pseudo</th>
+            <th>email</th>
+            <th>Admin</th>
             <th>Photo</th>
             <th>Actions</th>
         </tr>
@@ -29,6 +32,14 @@ require_once '../../layout/header.php';
             <tr>
                 <td><?php echo $user['nom']; ?></td>
                 <td><?php echo $user['prenom']; ?></td>
+                <td><?php echo $user['pseudo']; ?></td>
+                <td><?php echo $user['email']; ?></td>
+                <td><?php if ($user['admin']):?>
+                    <?php echo 'Oui'; ?>
+                    <?php else:?>
+                    <?php echo 'Non'; ?>
+                    <?php endif; ?>
+                </td>
                 <?php $picture = (!empty($user['picture'])) ? '../../../uploads/'.$user['picture'] : 'http://via.placeholder.com/150x150'; ?>
                 <td><img src="<?php echo $picture; ?>" class="img-thumbnail"></td>
                 <td>
@@ -39,5 +50,7 @@ require_once '../../layout/header.php';
         <?php endforeach; ?>
     </tbody>
 </table>
+
+
 
 <?php require_once '../../layout/footer.php'; ?>

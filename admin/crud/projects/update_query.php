@@ -3,22 +3,25 @@
 require_once '../../../model/database.php';
 
 // Récupérer les données du formulaire
-$id = $_POST["id"];
-$firstname = $_POST["firstname"];
-$lastname = $_POST["lastname"];
+$id = $_POST['id'];
+$titre = $_POST['titre'];
+$description = $_POST['description'];
+$date_depart = $_POST['date_depart'];
+$prix = $_POST['prix'];
+$label = $_POST['label'];
 
-$member = getOneEntity("member", $id);
-$picture = !is_null($member["picture"]) ? $member["picture"] : ""; // Image présente avant update
+$sejour = getAllSejour();
+$picture = !is_null($sejour['image']) ? $sejour['image'] : ''; // Image présente avant update
 
 // Vérifier si l'utilisateur a uploadé un fichier
-if ($_FILES["picture"]["error"] == 0) {
-    $picture = $_FILES["picture"]["name"];
+if ($_FILES['image']['error'] == 0) {
+    $picture = $_FILES['image']['name'];
     // Déplacer le fichier uploadé
-    move_uploaded_file($_FILES["picture"]["tmp_name"], "../../../uploads/" . $picture);
+    move_uploaded_file($_FILES['image']['tmp_name'], '../../../uploads/'.$picture);
 }
 
 // Insertion des données en BDD
-updateMember($id, $firstname, $lastname, $picture);
+updateSejour($id, $titre, $description, $image);
 
 // Redirection vers la liste
-header("Location: index.php");
+header('Location: index.php');

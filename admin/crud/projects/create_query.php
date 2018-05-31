@@ -3,24 +3,20 @@
 require_once '../../../model/database.php';
 
 // Récupérer les données du formulaire
-$title = $_POST["title"];
-$description = $_POST["description"];
-$price = $_POST["price"];
-$date_start = $_POST["date_start"];
-$date_end = $_POST["date_end"];
-$category_id = $_POST["category_id"];
+$titre = $_POST['titre'];
+$description = $_POST['description'];
 
-$picture = "";
+$image = '';
 
 // Vérifier si l'utilisateur a uploadé un fichier
-if ($_FILES["picture"]["error"] == 0) {
-    $picture = $_FILES["picture"]["name"];
+if ($_FILES['image']['error'] == 0) {
+    $image = $_FILES['image']['name'];
     // Déplacer le fichier uploadé
-    move_uploaded_file($_FILES["picture"]["tmp_name"], "../../../uploads/" . $picture);
+    move_uploaded_file($_FILES['image']['tmp_name'], '../../../uploads/'.$image);
 }
 
 // Insertion des données en BDD
-insertProject($title, $picture, $description, $price, $date_start, $date_end, $category_id);
+insertSejour($titre, $description, $image);
 
 // Redirection vers la liste
-header("Location: index.php");
+header('Location: index.php');

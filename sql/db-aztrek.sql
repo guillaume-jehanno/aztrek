@@ -106,6 +106,14 @@ GROUP BY user.id
 
 USE dcpro9_aztrek;
 SELECT *,
+pays.*, 
 DATE_FORMAT(depart.date_depart, "%d-%m-%Y") AS date_depart
 FROM sejour 
 INNER JOIN depart ON sejour.id = depart.sejour_id
+INNER JOIN pays ON sejour.pays_id = pays.id
+GROUP BY sejour_id
+
+USE dcpro9_aztrek;
+SELECT *
+FROM depart
+LEFT JOIN sejour ON depart.sejour_id = sejour.id
